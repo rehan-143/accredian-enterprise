@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+:root {
+  --color-paper: #F7F5EE;
+  --color-ink: #0B1130;
+  --color-ink-soft: #454B66;
+  --color-gold: #C89B3C;
+  --color-gold-soft: #E7C77A;
+  --color-slate: #33406B;
+  --color-teal: #2F6F63;
+  --color-line: #E2DDCC;
+  --color-line-dark: #2A3158;
+}
+
+@theme inline {
+  --color-paper: var(--color-paper);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-gold: var(--color-gold);
+  --color-gold-soft: var(--color-gold-soft);
+  --color-slate: var(--color-slate);
+  --color-teal: var(--color-teal);
+  --color-line: var(--color-line);
+  --color-line-dark: var(--color-line-dark);
+  --font-display: "Fraunces", Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+/*
+  This project ships without a next/font Google Fonts fetch so it builds in
+  network-restricted environments. For production, either:
+  1) re-enable next/font/google for Fraunces / Inter / JetBrains Mono in
+     app/layout.tsx (recommended on Vercel, which has open network access), or
+  2) self-host the .woff2 files under /public/fonts and add @font-face rules
+     here. Until then the stacks below fall back to close system serif/sans/
+     mono equivalents so the design still reads correctly.
+*/
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::selection {
+  background: var(--color-gold-soft);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
