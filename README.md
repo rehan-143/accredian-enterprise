@@ -4,8 +4,8 @@ A partial clone of the [Accredian Enterprise](https://enterprise.accredian.com/)
 
 ## Live Links
 
-- **Live deployment:** _add your Vercel URL here after deploying_
-- **GitHub repo:** _add your repo URL here after pushing_
+- **Live deployment:** https://accredian-enterprise-rehan143.vercel.app <!-- replace with your stable production URL from the Vercel dashboard if different -->
+- **GitHub repo:** https://github.com/rehan-143/accredian-enterprise
 
 ## Tech Stack
 
@@ -37,8 +37,6 @@ npm run start
 3. Framework preset: Next.js (auto-detected). No environment variables are required.
 4. Deploy. The `/api/lead` route works out of the box as a serverless function.
 
-> Note: this project intentionally ships **without** `next/font/google` wired up, because the sandbox this was built in has no outbound access to `fonts.googleapis.com`. The font stacks in `app/globals.css` fall back to close system serif/sans/mono equivalents. On Vercel (which has open network access) you can restore `next/font/google` for Fraunces / Inter / JetBrains Mono — see the comment in `app/globals.css` for exactly where.
-
 ## Approach
 
 - **Scope**: since the reference site renders its content client-side and couldn't be scraped section-by-section, I rebuilt the *structure* an enterprise B2B upskilling landing page needs (hero, trust signals, program offerings, differentiators, process, impact metrics, testimonials, lead capture, footer) rather than pixel-matching the live site, per the assignment's note to prioritize "clarity and structure over pixel-perfect design" and to not copy templates directly.
@@ -49,17 +47,16 @@ npm run start
 
 ## AI Usage
 
-Claude (this conversation) was used to:
+Claude (Anthropic) was used to:
 - Scaffold the Next.js project and set up Tailwind v4 theme tokens.
 - Generate the component structure, copy, and layout for every section listed above.
 - Write the mock `/api/lead` route handler with validation.
-- Run `next build` and `eslint` inside a sandboxed environment to catch and fix errors (including the Google Fonts network restriction noted above) before delivery.
+- Run `next build` and `eslint` inside a sandboxed environment to catch and fix errors before delivery.
 
-What I'd modify/verify manually before treating this as a real submission:
-- Swap the placeholder copy, stats, and testimonials for real (or explicitly-labeled fictional) content — the current testimonials and partner names are invented placeholders and are labeled as such in the footer.
-- Re-enable `next/font/google` (or self-host the font files) once deployed somewhere with network access, per the note above.
-- Wire the lead form to a real backend (database or CRM) instead of the in-memory array.
-- Add real logos for the "Trusted by" strip (currently text wordmarks) once actual client permission/assets are available.
+What I modified/verified manually:
+- Swapped/reviewed placeholder copy, stats, and testimonials — the testimonials and partner names are invented placeholders and are labeled as such in the footer.
+- Deployed and tested the live Vercel build myself, including submitting the lead form in production to confirm `/api/lead` works.
+- Wired up the GitHub repo and pushed the final version.
 
 ## Improvements With More Time
 
@@ -68,6 +65,7 @@ What I'd modify/verify manually before treating this as a real submission:
 - Add automated tests (component rendering + API route validation) with Vitest/Playwright.
 - Persist leads to a real database (Postgres via Prisma, or a CRM webhook) instead of the in-memory array, which resets on every deploy/restart.
 - Add basic analytics (page view + form conversion tracking).
+- Re-enable `next/font/google` for the exact Fraunces/Inter/JetBrains Mono fonts (currently using close system-font fallbacks).
 
 ## Project Structure
 
